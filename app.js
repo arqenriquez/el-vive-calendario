@@ -56,14 +56,14 @@ const EVENTOS = [
 
   // ===== JULIO =====
   { mes: "Julio", dia: 1, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Julio", dia: 5, dow: "Dom", cat: "misa", titulo: "Misa mensual", hora: "5:00 p.m." },
+  { mes: "Julio", dia: 5, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Sabado", hora: "5:00 p.m." },
   { mes: "Julio", dia: 6, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Julio", dia: 15, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: 18, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Julio", dia: 29, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== AGOSTO =====
-  { mes: "Agosto", dia: "3 – 13", dow: "Lun a Jue", cat: "especial", titulo: "Vacaciones", desc: "Del lunes 3 al jueves 13 de agosto.", rango: true },
+  { mes: "Agosto", dia: "3 – 16", dow: "Lun a Dom", cat: "especial", titulo: "Vacaciones", desc: "Del lunes 3 al domingo 16 de agosto.", rango: true },
   { mes: "Agosto", dia: 11, dow: "Mar", cat: "misa", titulo: "Misa por el 30.º Aniversario de la Comunidad ÉL VIVE" },
   { mes: "Agosto", dia: 19, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Agosto", dia: 22, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
@@ -85,9 +85,10 @@ const EVENTOS = [
   { mes: "Octubre", dia: 10, dow: "Sáb", cat: "especial", titulo: "Primera limpieza de rancho con Comunidad de Iniciación 1", desc: "Incluye un momento de convivencia, oración y encuentro en el rancho." },
   { mes: "Octubre", dia: 17, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Octubre", dia: 21, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Octubre", dia: 24, dow: "Sáb", cat: "economica", titulo: "Actividad económica grande" },
+  { mes: "Octubre", dia: 24, dow: "Sáb", cat: "economica", titulo: "Actividad económica grande (Conferencias)" },
   { mes: "Octubre", dia: 25, dow: "Dom", cat: "misa", titulo: "Misa mensual" },
   { mes: "Octubre", dia: 26, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
+  { mes: "Octubre", dia: 27, dow: "Mar", cat: "especial", titulo: "Inicio de invitaciones para el Retiro de Compromiso 1" },
 
   // ===== NOVIEMBRE =====
   { mes: "Noviembre", dia: 2, dow: "Lun", cat: "economica", titulo: "Inicio de la Mega Rifa" },
@@ -99,7 +100,6 @@ const EVENTOS = [
   { mes: "Noviembre", dia: 28, dow: "Sáb", cat: "especial", titulo: "Limpieza de rancho" },
 
   // ===== DICIEMBRE =====
-  { mes: "Diciembre", dia: 1, dow: "Mar", cat: "especial", titulo: "Inicio de invitaciones para el Retiro de Compromiso 1" },
   { mes: "Diciembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Diciembre", dia: 5, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Diciembre", dia: 8, dow: "Mar", cat: "economica", titulo: "Mega Rifa" },

@@ -40,7 +40,8 @@
     "dow": "Dom",
     "cat": "misa",
     "titulo": "Misa mensual",
-    "hora": "5:00 p.m."
+    "hora": "5:00 p.m.",
+    "desc": "Sabado"
   },
   {
     "mes": "Julio",
@@ -72,11 +73,11 @@
   },
   {
     "mes": "Agosto",
-    "dia": "3 – 13",
-    "dow": "Lun a Jue",
+    "dia": "3 – 16",
+    "dow": "Lun a Dom",
     "cat": "especial",
     "titulo": "Vacaciones",
-    "desc": "Del lunes 3 al jueves 13 de agosto.",
+    "desc": "Del lunes 3 al domingo 16 de agosto.",
     "rango": true
   },
   {
@@ -205,7 +206,7 @@
     "dia": 24,
     "dow": "Sáb",
     "cat": "economica",
-    "titulo": "Actividad económica grande"
+    "titulo": "Actividad económica grande (Conferencias)"
   },
   {
     "mes": "Octubre",
@@ -220,6 +221,13 @@
     "dow": "Lun",
     "cat": "matrimonios",
     "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
+  },
+  {
+    "mes": "Octubre",
+    "dia": 27,
+    "dow": "Mar",
+    "cat": "especial",
+    "titulo": "Inicio de invitaciones para el Retiro de Compromiso 1"
   },
   {
     "mes": "Noviembre",
@@ -270,13 +278,6 @@
     "dow": "Sáb",
     "cat": "especial",
     "titulo": "Limpieza de rancho"
-  },
-  {
-    "mes": "Diciembre",
-    "dia": 1,
-    "dow": "Mar",
-    "cat": "especial",
-    "titulo": "Inicio de invitaciones para el Retiro de Compromiso 1"
   },
   {
     "mes": "Diciembre",
