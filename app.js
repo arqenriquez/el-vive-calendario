@@ -22,7 +22,30 @@ const CATEGORIAS = {
   especial:    { nombre: "Especial",          color: "var(--c-especial)" },
 };
 
+const ANIO = 2026;
+
 const ORDEN_MESES = ["Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+// Mes (texto) -> índice de mes de JavaScript (0 = enero)
+const MES_NUM = {
+  Enero: 0, Febrero: 1, Marzo: 2, Abril: 3, Mayo: 4, Junio: 5,
+  Julio: 6, Agosto: 7, Septiembre: 8, Octubre: 9, Noviembre: 10, Diciembre: 11,
+};
+
+// Último día que abarca el evento (para rangos como "3 – 13" usa el 13)
+function diaFin(e) {
+  if (typeof e.dia === "number") return e.dia;
+  const nums = String(e.dia).match(/\d+/g);
+  return nums && nums.length ? Number(nums[nums.length - 1]) : 1;
+}
+
+// ¿El evento ya terminó respecto a la fecha de HOY? (se recalcula en cada carga)
+function esPasado(e) {
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const fin = new Date(ANIO, MES_NUM[e.mes], diaFin(e));
+  return fin < hoy;
+}
 
 const EVENTOS = [
   // ===== JUNIO =====
@@ -122,7 +145,7 @@ function renderAgenda() {
     html += `<section class="month" data-mes="${mes}">
       <div class="month-head reveal">
         <span class="month-name">${mes}</span>
-        <span class="month-year">2026</span>
+        <span class="month-year">${ANIO}</span>
         <span class="month-line"></span>
       </div>
       <div class="timeline">
@@ -137,7 +160,8 @@ function eventoHTML(e) {
   const c = CATEGORIAS[e.cat];
   const hora = e.hora ? `<span class="event-time">🕐 ${e.hora}</span>` : "";
   const desc = e.desc ? `<p class="event-desc">${e.desc}</p>` : "";
-  return `<article class="event reveal ${e.rango ? "is-range" : ""}" data-cat="${e.cat}" style="--cat:${c.color}">
+  const pasado = esPasado(e) ? "past" : "";
+  return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
     <div class="event-date">
       <span class="event-dow">${e.dow}</span>
       <span class="event-num">${e.dia}</span>

@@ -248,6 +248,17 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.1rem; }
 /* Evento de rango (vacaciones) */
 .event.is-range { border-left-style: dashed; background: var(--vino-tint); }
 
+/* Evento ya pasado: se atenúa en gris (se calcula solo según la fecha de hoy) */
+.event.past {
+  --cat: #a8a3a0;
+  background: #f3f0ee;
+  filter: grayscale(1);
+  opacity: .62;
+}
+.event.past .event-title { color: var(--ink-soft); }
+.event.past .event-time { color: var(--ink-soft); background: #e7e2df; }
+.event.past:hover { transform: none; box-shadow: var(--shadow-sm); }
+
 /* Filtrado: ocultar */
 .event.filtered-out { display: none; }
 .month.month-hidden { display: none; }
