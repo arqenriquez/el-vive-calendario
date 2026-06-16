@@ -41,7 +41,7 @@
     "cat": "misa",
     "titulo": "Misa mensual",
     "hora": "5:00 p.m.",
-    "desc": "Sabado"
+    "desc": "Domingo"
   },
   {
     "mes": "Julio",
@@ -110,10 +110,12 @@
   },
   {
     "mes": "Agosto",
-    "dia": 30,
-    "dow": "Dom",
+    "dia": 29,
+    "dow": "Sáb",
     "cat": "misa",
-    "titulo": "Misa mensual"
+    "titulo": "Misa mensual",
+    "hora": "5:00 p.m.",
+    "desc": "Sabado"
   },
   {
     "mes": "Agosto",
@@ -124,10 +126,12 @@
   },
   {
     "mes": "Septiembre",
-    "dia": 6,
-    "dow": "Dom",
+    "dia": 5,
+    "dow": "Sáb",
     "cat": "misa",
-    "titulo": "Misa de Niños"
+    "titulo": "Misa de Niños",
+    "hora": "5:00 p.m.",
+    "desc": "Sabado"
   },
   {
     "mes": "Septiembre",
@@ -159,11 +163,12 @@
   },
   {
     "mes": "Septiembre",
-    "dia": 27,
-    "dow": "Dom",
+    "dia": 26,
+    "dow": "Sáb",
     "cat": "misa",
     "titulo": "Misa mensual",
-    "hora": "5:00 p.m."
+    "hora": "5:00 p.m.",
+    "desc": "Sabado"
   },
   {
     "mes": "Septiembre",
@@ -210,10 +215,12 @@
   },
   {
     "mes": "Octubre",
-    "dia": 25,
-    "dow": "Dom",
+    "dia": 24,
+    "dow": "Sáb",
     "cat": "misa",
-    "titulo": "Misa mensual"
+    "titulo": "Misa mensual",
+    "hora": "5:00 p.m.",
+    "desc": "Sabado"
   },
   {
     "mes": "Octubre",
@@ -252,10 +259,11 @@
   },
   {
     "mes": "Noviembre",
-    "dia": 15,
-    "dow": "Dom",
+    "dia": 14,
+    "dow": "Sáb",
     "cat": "misa",
     "titulo": "Misa mensual y convivencia con KIDS",
+    "hora": "5:00 p.m.",
     "desc": "(O apostolado con KIDS, por definir.)"
   },
   {
@@ -312,15 +320,7 @@
     "dia": 12,
     "dow": "Sáb",
     "cat": "especial",
-    "titulo": "Día de la Virgen y Posada KIDS"
-  },
-  {
-    "mes": "Diciembre",
-    "dia": 13,
-    "dow": "Dom",
-    "cat": "misa",
-    "titulo": "Misa mensual y Posada de la comunidad",
-    "hora": "5:00 p.m."
+    "titulo": "Día de la Virgen, misa y Posada KIDS"
   },
   {
     "mes": "Diciembre",
