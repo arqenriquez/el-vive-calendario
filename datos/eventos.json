@@ -29,14 +29,6 @@
   },
   {
     "mes": "Julio",
-    "dia": "",
-    "dow": "",
-    "cat": "apostolado",
-    "titulo": "Apostolado mensual",
-    "desc": "Lugar y fecha exacta por definir"
-  },
-  {
-    "mes": "Julio",
     "dia": 1,
     "dow": "Mié",
     "cat": "consejo",
@@ -91,7 +83,7 @@
     "rango": true
   },
   {
-    "mes": "Agosto",
+    "mes": "Julio",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -145,7 +137,7 @@
     "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
   },
   {
-    "mes": "Septiembre",
+    "mes": "Agosto",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -208,7 +200,7 @@
     "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
   },
   {
-    "mes": "Octubre",
+    "mes": "Septiembre",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -268,7 +260,7 @@
     "titulo": "Inicio de invitaciones para el Retiro de Compromiso 1"
   },
   {
-    "mes": "Noviembre",
+    "mes": "Octubre",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -320,7 +312,7 @@
     "titulo": "Limpieza de rancho"
   },
   {
-    "mes": "Diciembre",
+    "mes": "Noviembre",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -376,5 +368,13 @@
     "dow": "Jue",
     "cat": "especial",
     "titulo": "Última Hora Santa del año"
+  },
+  {
+    "mes": "Diciembre",
+    "dia": "",
+    "dow": "",
+    "cat": "apostolado",
+    "titulo": "Apostolado mensual",
+    "desc": "Lugar y fecha exacta por definir"
   }
 ]
