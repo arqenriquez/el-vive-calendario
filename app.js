@@ -60,6 +60,7 @@ const EVENTOS = [
   { mes: "Julio", dia: 6, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Julio", dia: 15, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: 18, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
+  { mes: "Julio", dia: "24 – 26", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #121 de Monterrey", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Julio", dia: 29, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== AGOSTO =====
@@ -69,9 +70,11 @@ const EVENTOS = [
   { mes: "Agosto", dia: 22, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Agosto", dia: 29, dow: "Sáb", cat: "economica", titulo: "Actividad económica chica" },
   { mes: "Agosto", dia: 29, dow: "Sáb", cat: "misa", titulo: "Misa mensual", desc: "Sabado", hora: "5:00 p.m." },
+  { mes: "Agosto", dia: "31 – 2", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #122 de Monterrey", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Agosto", dia: 31, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
 
   // ===== SEPTIEMBRE =====
+  { mes: "Septiembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #3 de Chihuahua", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Septiembre", dia: 5, dow: "Sáb", cat: "misa", titulo: "Misa de Niños", desc: "Sabado", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 9, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 15, dow: "Mar", cat: "economica", titulo: "Kermés de la Parroquia La Resurrección" },
