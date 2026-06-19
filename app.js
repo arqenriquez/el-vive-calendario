@@ -41,6 +41,7 @@ function diaFin(e) {
 
 // ¿El evento ya terminó respecto a la fecha de HOY? (se recalcula en cada carga)
 function esPasado(e) {
+  if (!String(e.dia).trim()) return false; // sin fecha definida: nunca se atenúa
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
   const fin = new Date(ANIO, MES_NUM[e.mes], diaFin(e));
@@ -55,38 +56,38 @@ const EVENTOS = [
   { mes: "Junio", dia: 20, dow: "Sáb", cat: "apostolado", titulo: "Apostolado" },
 
   // ===== JULIO =====
+  { mes: "Julio", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Julio", dia: 1, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: 5, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Julio", dia: 6, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Julio", dia: 15, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Julio", dia: 18, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Julio", dia: "24 – 26", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #121 de Monterrey", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Julio", dia: 29, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: "31 – 2", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #122 de Monterrey", desc: "Nos unimos todos en oración", rango: true },
 
   // ===== AGOSTO =====
+  { mes: "Agosto", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Agosto", dia: "3 – 16", dow: "Lun a Dom", cat: "especial", titulo: "Vacaciones", desc: "Del lunes 3 al domingo 16 de agosto.", rango: true },
   { mes: "Agosto", dia: 11, dow: "Mar", cat: "misa", titulo: "Misa por el 30.º Aniversario de la Comunidad ÉL VIVE" },
   { mes: "Agosto", dia: 19, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Agosto", dia: 22, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Agosto", dia: 29, dow: "Sáb", cat: "economica", titulo: "Actividad económica chica" },
   { mes: "Agosto", dia: 29, dow: "Sáb", cat: "misa", titulo: "Misa mensual", desc: "Sabado", hora: "5:00 p.m." },
   { mes: "Agosto", dia: 31, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
 
   // ===== SEPTIEMBRE =====
+  { mes: "Septiembre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Septiembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #3 de Chihuahua", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Septiembre", dia: 5, dow: "Sáb", cat: "misa", titulo: "Misa de Niños", desc: "Sabado", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 9, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 15, dow: "Mar", cat: "economica", titulo: "Kermés de la Parroquia La Resurrección" },
-  { mes: "Septiembre", dia: 19, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 26, dow: "Sáb", cat: "misa", titulo: "Misa mensual", desc: "Sabado", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 28, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
 
   // ===== OCTUBRE =====
+  { mes: "Octubre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Octubre", dia: 7, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Octubre", dia: 10, dow: "Sáb", cat: "especial", titulo: "Primera limpieza de rancho con Comunidad de Iniciación 1", desc: "Incluye un momento de convivencia, oración y encuentro en el rancho." },
-  { mes: "Octubre", dia: 17, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Octubre", dia: 21, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Octubre", dia: 24, dow: "Sáb", cat: "economica", titulo: "Actividad económica grande (Conferencias)" },
   { mes: "Octubre", dia: 24, dow: "Sáb", cat: "misa", titulo: "Misa mensual", desc: "Sabado", hora: "5:00 p.m." },
@@ -94,17 +95,17 @@ const EVENTOS = [
   { mes: "Octubre", dia: 27, dow: "Mar", cat: "especial", titulo: "Inicio de invitaciones para el Retiro de Compromiso 1" },
 
   // ===== NOVIEMBRE =====
+  { mes: "Noviembre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Noviembre", dia: 2, dow: "Lun", cat: "economica", titulo: "Inicio de la Mega Rifa" },
   { mes: "Noviembre", dia: 4, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Noviembre", dia: 7, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Noviembre", dia: 14, dow: "Sáb", cat: "misa", titulo: "Misa mensual y convivencia con KIDS", desc: "(O apostolado con KIDS, por definir.)", hora: "5:00 p.m." },
   { mes: "Noviembre", dia: 18, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 23, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Noviembre", dia: 28, dow: "Sáb", cat: "especial", titulo: "Limpieza de rancho" },
 
   // ===== DICIEMBRE =====
+  { mes: "Diciembre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
   { mes: "Diciembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Diciembre", dia: 5, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual" },
   { mes: "Diciembre", dia: 8, dow: "Mar", cat: "economica", titulo: "Mega Rifa" },
   { mes: "Diciembre", dia: 11, dow: "Vie", cat: "especial", titulo: "Peregrinación" },
   { mes: "Diciembre", dia: 12, dow: "Sáb", cat: "especial", titulo: "Día de la Virgen, misa y Posada KIDS" },
@@ -163,10 +164,16 @@ function eventoHTML(e) {
   const hora = e.hora ? `<span class="event-time">🕐 ${e.hora}</span>` : "";
   const desc = e.desc ? `<p class="event-desc">${e.desc}</p>` : "";
   const pasado = esPasado(e) ? "past" : "";
+
+  // Eventos sin día definido (ej. apostolado "fecha por definir"): casilla especial.
+  const sinFecha = !String(e.dia).trim();
+  const fechaBox = sinFecha
+    ? `<span class="event-num event-num--tbd">📅</span><span class="event-dow">por definir</span>`
+    : `<span class="event-dow">${e.dow}</span><span class="event-num">${e.dia}</span>`;
+
   return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
-    <div class="event-date">
-      <span class="event-dow">${e.dow}</span>
-      <span class="event-num">${e.dia}</span>
+    <div class="event-date${sinFecha ? " event-date--tbd" : ""}">
+      ${fechaBox}
     </div>
     <div class="event-body">
       <h3 class="event-title">${e.titulo}</h3>
