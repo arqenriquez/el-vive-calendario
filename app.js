@@ -171,6 +171,18 @@ function eventoHTML(e) {
     ? `<span class="event-num event-num--tbd">📅</span><span class="event-dow">por definir</span>`
     : `<span class="event-dow">${e.dow}</span><span class="event-num">${e.dia}</span>`;
 
+  // Botón "Agregar a tu calendario" (solo si el evento tiene fecha definida).
+  const cal = fechasCalendario(e);
+  const calBtn = cal
+    ? `<div class="cal-add" data-titulo="${escAttr(e.titulo)}" data-desc="${escAttr(e.desc || "")}" data-allday="${cal.allDay ? "1" : "0"}" data-start="${cal.start}" data-end="${cal.end}">
+        <button class="cal-btn" type="button" aria-haspopup="true" aria-expanded="false"><span class="cal-ico" aria-hidden="true">＋</span> Agregar a tu calendario</button>
+        <div class="cal-menu" role="menu" hidden>
+          <button class="cal-opt" type="button" data-cal-kind="google" role="menuitem">📅 Google Calendar</button>
+          <button class="cal-opt" type="button" data-cal-kind="ics" role="menuitem">📅 Apple Calendar</button>
+        </div>
+      </div>`
+    : "";
+
   return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
     <div class="event-date${sinFecha ? " event-date--tbd" : ""}">
       ${fechaBox}
@@ -182,8 +194,137 @@ function eventoHTML(e) {
         ${hora}
         <span class="event-tag">${c.nombre}</span>
       </div>
+      ${calBtn}
     </div>
   </article>`;
+}
+
+/* ============ AGREGAR AL CALENDARIO ============ */
+const pad2 = (n) => String(n).padStart(2, "0");
+
+function escAttr(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// "5:00 p.m." -> { hh, mm } en 24 h; null si no se reconoce.
+function parseHora(h) {
+  const m = String(h).match(/(\d{1,2}):(\d{2})\s*([ap])\.?\s*\.?m/i);
+  if (!m) return null;
+  let hh = +m[1];
+  const mm = +m[2];
+  const pm = m[3].toLowerCase() === "p";
+  if (pm && hh < 12) hh += 12;
+  if (!pm && hh === 12) hh = 0;
+  return { hh, mm };
+}
+
+// Fecha/hora de inicio y fin para exportar. null si el evento no tiene fecha.
+// Con hora -> evento de 1.5 h. Sin hora o rango -> día(s) completo(s).
+function fechasCalendario(e) {
+  const s = String(e.dia).trim();
+  if (!s) return null;
+  const mesIdx = MES_NUM[e.mes];
+  if (mesIdx === undefined) return null;
+
+  const partes = s.split(/[–-]/).map((x) => x.trim()).filter(Boolean);
+  const diaIni = parseInt(partes[0], 10);
+  if (isNaN(diaIni)) return null;
+  const diaFin = partes.length > 1 ? parseInt(partes[1], 10) : diaIni;
+  // Rango que cruza de mes (ej. "31 – 2"): el fin cae en el mes siguiente.
+  const mesFin = diaFin < diaIni ? mesIdx + 1 : mesIdx;
+  const esRango = e.rango || diaFin !== diaIni;
+  const hora = e.hora ? parseHora(e.hora) : null;
+
+  if (hora && !esRango) {
+    const ini = new Date(ANIO, mesIdx, diaIni, hora.hh, hora.mm);
+    const fin = new Date(ini.getTime() + 90 * 60000);
+    const dt = (d) => `${d.getFullYear()}${pad2(d.getMonth() + 1)}${pad2(d.getDate())}T${pad2(d.getHours())}${pad2(d.getMinutes())}00`;
+    return { allDay: false, start: dt(ini), end: dt(fin) };
+  }
+  // Día completo: el fin es exclusivo (último día + 1).
+  const ini = new Date(ANIO, mesIdx, diaIni);
+  const fin = new Date(ANIO, mesFin, diaFin + 1);
+  const d = (x) => `${x.getFullYear()}${pad2(x.getMonth() + 1)}${pad2(x.getDate())}`;
+  return { allDay: true, start: d(ini), end: d(fin) };
+}
+
+function googleCalUrl(titulo, desc, f) {
+  let u = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    `&text=${encodeURIComponent(titulo)}&dates=${f.start}/${f.end}`;
+  if (desc) u += `&details=${encodeURIComponent(desc)}`;
+  if (!f.allDay) u += "&ctz=America/Mexico_City";
+  return u;
+}
+
+function icsTexto(titulo, desc, f) {
+  const esc = (t) => String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  const n = new Date();
+  const stamp = `${n.getUTCFullYear()}${pad2(n.getUTCMonth() + 1)}${pad2(n.getUTCDate())}T${pad2(n.getUTCHours())}${pad2(n.getUTCMinutes())}${pad2(n.getUTCSeconds())}Z`;
+  const uid = `elvive-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@elvive`;
+  const dt = (val) => (f.allDay ? `;VALUE=DATE:${val}` : `:${val}`);
+  const L = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//EL VIVE//Calendario//ES", "CALSCALE:GREGORIAN",
+    "BEGIN:VEVENT", `UID:${uid}`, `DTSTAMP:${stamp}`,
+    `DTSTART${dt(f.start)}`, `DTEND${dt(f.end)}`, `SUMMARY:${esc(titulo)}`,
+  ];
+  if (desc) L.push(`DESCRIPTION:${esc(desc)}`);
+  L.push("END:VEVENT", "END:VCALENDAR");
+  return L.join("\r\n");
+}
+
+function descargarICS(texto, nombre) {
+  const blob = new Blob([texto], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nombre;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 200);
+}
+
+function nombreArchivoICS(titulo) {
+  const slug = titulo.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "evento";
+  return `elvive-${slug}.ics`;
+}
+
+function cerrarMenusCal() {
+  document.querySelectorAll(".cal-menu:not([hidden])").forEach((m) => { m.hidden = true; });
+  document.querySelectorAll(".cal-btn[aria-expanded='true']").forEach((b) => b.setAttribute("aria-expanded", "false"));
+}
+
+function initCalendario() {
+  const agenda = document.getElementById("agenda");
+  agenda.addEventListener("click", (ev) => {
+    const btn = ev.target.closest(".cal-btn");
+    if (btn) {
+      const menu = btn.parentElement.querySelector(".cal-menu");
+      const abierto = !menu.hidden;
+      cerrarMenusCal();
+      if (!abierto) {
+        menu.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+      }
+      return;
+    }
+    const opt = ev.target.closest(".cal-opt");
+    if (!opt) return;
+    const cont = opt.closest(".cal-add");
+    const f = { allDay: cont.dataset.allday === "1", start: cont.dataset.start, end: cont.dataset.end };
+    const titulo = cont.dataset.titulo || "Evento ÉL VIVE";
+    const desc = cont.dataset.desc || "";
+    if (opt.dataset.calKind === "google") {
+      window.open(googleCalUrl(titulo, desc, f), "_blank", "noopener");
+    } else {
+      descargarICS(icsTexto(titulo, desc, f), nombreArchivoICS(titulo));
+    }
+    cerrarMenusCal();
+  });
+  // Cerrar el menú al tocar fuera.
+  document.addEventListener("click", (ev) => {
+    if (!ev.target.closest(".cal-add")) cerrarMenusCal();
+  });
 }
 
 /* ============ FILTRO ============ */
@@ -238,5 +379,6 @@ function initToTop() {
 /* ============ INIT ============ */
 document.addEventListener("DOMContentLoaded", () => {
   render();
+  initCalendario();
   initToTop();
 });

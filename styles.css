@@ -251,6 +251,34 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.1rem; }
 /* Evento de rango (vacaciones) */
 .event.is-range { border-left-style: dashed; background: var(--vino-tint); }
 
+/* ====== Botón "Agregar a tu calendario" ====== */
+.cal-add { position: relative; margin-top: .7rem; }
+.cal-btn {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-family: inherit; font-size: .76rem; font-weight: 600;
+  color: var(--cat, var(--vino));
+  background: color-mix(in srgb, var(--cat, var(--vino)) 9%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--cat, var(--vino)) 35%, transparent);
+  padding: .35rem .72rem; border-radius: 999px; cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.cal-btn:hover { background: color-mix(in srgb, var(--cat, var(--vino)) 17%, transparent); }
+.cal-ico { font-size: 1rem; line-height: 1; }
+.cal-menu {
+  position: absolute; z-index: 30; left: 0; top: calc(100% + .35rem);
+  min-width: 210px; background: var(--paper);
+  border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow-md); padding: .35rem;
+}
+.cal-opt {
+  display: flex; align-items: center; gap: .5rem; width: 100%;
+  font-family: inherit; font-size: .82rem; font-weight: 500; text-align: left;
+  color: var(--ink); background: transparent; border: 0; border-radius: 10px;
+  padding: .55rem .6rem; cursor: pointer;
+}
+.cal-opt:hover { background: var(--vino-tint); color: var(--vino); }
+.event.past .cal-add { display: none; }
+
 /* Evento ya pasado: se atenúa en gris (se calcula solo según la fecha de hoy) */
 .event.past {
   --cat: #a8a3a0;
