@@ -152,14 +152,14 @@ function renderAgenda() {
         <span class="month-line"></span>
       </div>
       <div class="timeline">
-        ${eventos.map(eventoHTML).join("")}
+        ${eventos.map((e) => eventoHTML(e, EVENTOS.indexOf(e))).join("")}
       </div>
     </section>`;
   }
   agenda.innerHTML = html;
 }
 
-function eventoHTML(e) {
+function eventoHTML(e, idx) {
   const c = CATEGORIAS[e.cat];
   const hora = e.hora ? `<span class="event-time">🕐 ${e.hora}</span>` : "";
   const desc = e.desc ? `<p class="event-desc">${e.desc}</p>` : "";
@@ -173,8 +173,9 @@ function eventoHTML(e) {
 
   // Botón "Agregar a tu calendario" (solo si el evento tiene fecha definida).
   const cal = fechasCalendario(e);
+  const icsUrl = cal && Number.isInteger(idx) && idx >= 0 ? `ics/ev-${idx}.ics` : "";
   const calBtn = cal
-    ? `<div class="cal-add" data-titulo="${escAttr(e.titulo)}" data-desc="${escAttr(e.desc || "")}" data-allday="${cal.allDay ? "1" : "0"}" data-start="${cal.start}" data-end="${cal.end}">
+    ? `<div class="cal-add" data-titulo="${escAttr(e.titulo)}" data-desc="${escAttr(e.desc || "")}" data-allday="${cal.allDay ? "1" : "0"}" data-start="${cal.start}" data-end="${cal.end}" data-ics="${icsUrl}">
         <button class="cal-btn" type="button" aria-haspopup="true" aria-expanded="false"><span class="cal-ico" aria-hidden="true">＋</span> Agregar a tu calendario</button>
         <div class="cal-menu" role="menu" hidden>
           <button class="cal-opt" type="button" data-cal-kind="google" role="menuitem">📅 Google Calendar</button>
@@ -324,14 +325,13 @@ function initCalendario() {
     const desc = cont.dataset.desc || "";
     if (opt.dataset.calKind === "google") {
       window.open(googleCalUrl(titulo, desc, f), "_blank", "noopener");
+    } else if (esIOS() && cont.dataset.ics) {
+      // iPhone/iPad: abrir el archivo .ics alojado (servido como text/calendar)
+      // hace que iOS muestre la hoja "Agregar a Calendario".
+      window.location.href = cont.dataset.ics;
     } else {
-      const ics = icsTexto(titulo, desc, f);
-      if (esIOS()) {
-        // En iPhone/iPad abre directo la hoja "Agregar a Calendario".
-        window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
-      } else {
-        descargarICS(ics, nombreArchivoICS(titulo));
-      }
+      // Escritorio / Android: descarga el .ics generado al momento.
+      descargarICS(icsTexto(titulo, desc, f), nombreArchivoICS(titulo));
     }
     cerrarMenusCal();
   });

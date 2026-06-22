@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EL VIVE//Calendario//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:elvive-20261010-85399@elvive
+DTSTAMP:20260622T193840Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Primera limpieza de rancho con Comunidad de Iniciación 1
+DESCRIPTION:Incluye un momento de convivencia\, oración y encuentro en el rancho.
+END:VEVENT
+END:VCALENDAR

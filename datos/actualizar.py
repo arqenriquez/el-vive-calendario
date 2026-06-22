@@ -11,7 +11,7 @@ Uso:
 import json
 import os
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 
 import openpyxl
 
@@ -61,6 +61,86 @@ def dow_es(mes, dia):
         return DOW_ES[date(ANIO, MES_NUM[mes], int(dia)).weekday()]
     except (ValueError, KeyError, TypeError):
         return ""
+
+
+ICS_DIR = os.path.join(RAIZ, "ics")
+
+
+def parse_hora(h):
+    """'5:00 p.m.' -> (hh, mm) en 24 h; None si no se reconoce."""
+    m = re.search(r"(\d{1,2}):(\d{2})\s*([ap])\.?\s*\.?m", str(h), re.I)
+    if not m:
+        return None
+    hh, mm = int(m.group(1)), int(m.group(2))
+    pm = m.group(3).lower() == "p"
+    if pm and hh < 12:
+        hh += 12
+    if not pm and hh == 12:
+        hh = 0
+    return hh, mm
+
+
+def fechas_cal(e):
+    """('timed'|'allday', inicio, fin) o None si el evento no tiene fecha.
+    Misma lógica que app.js: con hora = 1.5 h; sin hora o rango = día(s) completo(s)."""
+    s = str(e["dia"]).strip()
+    if not s or e["mes"] not in MES_NUM:
+        return None
+    partes = [p.strip() for p in re.split(r"[–-]", s) if p.strip()]
+    if not partes or not partes[0].isdigit():
+        return None
+    dia_ini = int(partes[0])
+    dia_fin = int(partes[1]) if len(partes) > 1 and partes[1].isdigit() else dia_ini
+    mes_ini = MES_NUM[e["mes"]]
+    mes_fin = mes_ini + 1 if dia_fin < dia_ini else mes_ini  # rango que cruza de mes
+    es_rango = bool(e.get("rango")) or dia_fin != dia_ini
+    hora = parse_hora(e.get("hora", ""))
+    if hora and not es_rango:
+        ini = datetime(ANIO, mes_ini, dia_ini, hora[0], hora[1])
+        fin = ini + timedelta(minutes=90)
+        return ("timed", ini.strftime("%Y%m%dT%H%M00"), fin.strftime("%Y%m%dT%H%M00"))
+    ini = date(ANIO, mes_ini, dia_ini)
+    fin = date(ANIO, mes_fin, dia_fin) + timedelta(days=1)  # fin exclusivo
+    return ("allday", ini.strftime("%Y%m%d"), fin.strftime("%Y%m%d"))
+
+
+def ics_text(titulo, desc, kind, start, end):
+    def esc(t):
+        return (str(t).replace("\\", "\\\\").replace(";", "\\;")
+                .replace(",", "\\,").replace("\n", "\\n"))
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    uid = f"elvive-{start}-{abs(hash(titulo)) % 100000}@elvive"
+    dts = f";VALUE=DATE:{start}" if kind == "allday" else f":{start}"
+    dte = f";VALUE=DATE:{end}" if kind == "allday" else f":{end}"
+    L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//EL VIVE//Calendario//ES",
+         "CALSCALE:GREGORIAN", "BEGIN:VEVENT", f"UID:{uid}", f"DTSTAMP:{stamp}",
+         f"DTSTART{dts}", f"DTEND{dte}", f"SUMMARY:{esc(titulo)}"]
+    if desc:
+        L.append(f"DESCRIPTION:{esc(desc)}")
+    L += ["END:VEVENT", "END:VCALENDAR"]
+    return "\r\n".join(L) + "\r\n"
+
+
+def generar_ics(eventos):
+    """Genera ../ics/ev-<i>.ics (uno por evento con fecha). El índice <i>
+    coincide con la posición del evento en el arreglo EVENTOS de app.js."""
+    if os.path.isdir(ICS_DIR):
+        for f in os.listdir(ICS_DIR):
+            if f.endswith(".ics"):
+                os.remove(os.path.join(ICS_DIR, f))
+    else:
+        os.makedirs(ICS_DIR)
+    n = 0
+    for i, e in enumerate(eventos):
+        fc = fechas_cal(e)
+        if not fc:
+            continue
+        txt = ics_text(e["titulo"], e.get("desc", ""), *fc)
+        with open(os.path.join(ICS_DIR, f"ev-{i}.ics"), "w",
+                  encoding="utf-8", newline="") as f:
+            f.write(txt)
+        n += 1
+    return n
 
 
 def leer_excel():
@@ -180,9 +260,10 @@ def main():
     with open(JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(eventos, f, ensure_ascii=False, indent=2)
     actualizar_appjs(eventos)
+    n_ics = generar_ics(eventos)
     token = sellar_version()
     print(f"Listo: {len(eventos)} eventos -> eventos.json y app.js actualizados. "
-          f"(versión de caché: {token})")
+          f"({n_ics} archivos .ics | versión de caché: {token})")
 
 
 if __name__ == "__main__":
