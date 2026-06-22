@@ -272,6 +272,14 @@ function icsTexto(titulo, desc, f) {
   return L.join("\r\n");
 }
 
+// iPhone / iPad (incluye iPadOS que se reporta como Mac con pantalla táctil).
+function esIOS() {
+  const ua = navigator.userAgent || "";
+  const iOSClasico = /iP(hone|od|ad)/.test(ua);
+  const iPadOS = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+  return iOSClasico || iPadOS;
+}
+
 function descargarICS(texto, nombre) {
   const blob = new Blob([texto], { type: "text/calendar;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -317,7 +325,13 @@ function initCalendario() {
     if (opt.dataset.calKind === "google") {
       window.open(googleCalUrl(titulo, desc, f), "_blank", "noopener");
     } else {
-      descargarICS(icsTexto(titulo, desc, f), nombreArchivoICS(titulo));
+      const ics = icsTexto(titulo, desc, f);
+      if (esIOS()) {
+        // En iPhone/iPad abre directo la hoja "Agregar a Calendario".
+        window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+      } else {
+        descargarICS(ics, nombreArchivoICS(titulo));
+      }
     }
     cerrarMenusCal();
   });
