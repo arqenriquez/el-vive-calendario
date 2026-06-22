@@ -100,11 +100,11 @@ const EVENTOS = [
   { mes: "Noviembre", dia: 14, dow: "Sáb", cat: "misa", titulo: "Misa mensual y convivencia con KIDS", desc: "(O apostolado con KIDS, por definir.)", hora: "5:00 p.m." },
   { mes: "Noviembre", dia: 18, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 23, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
-  { mes: "Noviembre", dia: "27-29", dow: "Vie a Dom", cat: "especial", titulo: "Retiro de Compromiso", desc: "Retiro de compromiso INI#1 HMO", rango: true },
   { mes: "Noviembre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
 
   // ===== DICIEMBRE =====
   { mes: "Diciembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
+  { mes: "Diciembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro de Compromiso", desc: "Retiro de compromiso INI#1 HMO", rango: true },
   { mes: "Diciembre", dia: 8, dow: "Mar", cat: "economica", titulo: "Mega Rifa" },
   { mes: "Diciembre", dia: 11, dow: "Vie", cat: "especial", titulo: "Peregrinación" },
   { mes: "Diciembre", dia: 12, dow: "Sáb", cat: "especial", titulo: "Día de la Virgen, misa y Posada KIDS" },

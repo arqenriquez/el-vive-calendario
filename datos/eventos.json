@@ -307,15 +307,6 @@
   },
   {
     "mes": "Noviembre",
-    "dia": "27-29",
-    "dow": "Vie a Dom",
-    "cat": "especial",
-    "titulo": "Retiro de Compromiso",
-    "desc": "Retiro de compromiso INI#1 HMO",
-    "rango": true
-  },
-  {
-    "mes": "Noviembre",
     "dia": "",
     "dow": "",
     "cat": "apostolado",
@@ -328,6 +319,15 @@
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
+  },
+  {
+    "mes": "Diciembre",
+    "dia": "4 – 6",
+    "dow": "Vie a Dom",
+    "cat": "especial",
+    "titulo": "Retiro de Compromiso",
+    "desc": "Retiro de compromiso INI#1 HMO",
+    "rango": true
   },
   {
     "mes": "Diciembre",
