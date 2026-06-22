@@ -100,7 +100,7 @@ const EVENTOS = [
   { mes: "Noviembre", dia: 14, dow: "Sáb", cat: "misa", titulo: "Misa mensual y convivencia con KIDS", desc: "(O apostolado con KIDS, por definir.)", hora: "5:00 p.m." },
   { mes: "Noviembre", dia: 18, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 23, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
-  { mes: "Noviembre", dia: 28, dow: "Sáb", cat: "especial", titulo: "Limpieza de rancho" },
+  { mes: "Noviembre", dia: "27-29", dow: "Vie a Dom", cat: "especial", titulo: "Retiro de Compromiso", desc: "Retiro de compromiso INI#1 HMO", rango: true },
   { mes: "Noviembre", dia: "", dow: "", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y fecha exacta por definir" },
 
   // ===== DICIEMBRE =====
