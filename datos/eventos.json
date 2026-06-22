@@ -22,10 +22,11 @@
   },
   {
     "mes": "Junio",
-    "dia": 20,
-    "dow": "Sáb",
+    "dia": 30,
+    "dow": "Mar",
     "cat": "apostolado",
-    "titulo": "Apostolado"
+    "titulo": "Apostolado mensual",
+    "desc": "Lugar y hora por definir"
   },
   {
     "mes": "Julio",
