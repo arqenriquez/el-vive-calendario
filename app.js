@@ -164,6 +164,9 @@ function eventoHTML(e, idx) {
   const hora = e.hora ? `<span class="event-time">🕐 ${e.hora}</span>` : "";
   const desc = e.desc ? `<p class="event-desc">${e.desc}</p>` : "";
   const pasado = esPasado(e) ? "past" : "";
+  const doneCheck = esPasado(e)
+    ? `<span class="event-done" title="Ya se realizó" aria-label="Ya se realizó">✓</span>`
+    : "";
 
   // Eventos sin día definido (ej. apostolado "fecha por definir"): casilla especial.
   const sinFecha = !String(e.dia).trim();
@@ -185,6 +188,7 @@ function eventoHTML(e, idx) {
     : "";
 
   return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
+    ${doneCheck}
     <div class="event-date${sinFecha ? " event-date--tbd" : ""}">
       ${fechaBox}
     </div>
