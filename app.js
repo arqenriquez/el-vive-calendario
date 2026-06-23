@@ -53,7 +53,7 @@ const EVENTOS = [
   { mes: "Junio", dia: 8, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Junio", dia: 10, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Junio", dia: 17, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Junio", dia: 30, dow: "Mar", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y hora por definir" },
+  { mes: "Junio", dia: 30, dow: "Mar", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y hora por definir", mapa: "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8" },
 
   // ===== JULIO =====
   { mes: "Julio", dia: 1, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
@@ -187,6 +187,11 @@ function eventoHTML(e, idx) {
       </div>`
     : "";
 
+  // Botón "Ver ubicación" (solo si el evento trae link de Google Maps).
+  const mapa = e.mapa
+    ? `<a class="event-map" href="${e.mapa}" target="_blank" rel="noopener noreferrer">📍 Ver ubicación</a>`
+    : "";
+
   return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
     ${doneCheck}
     <div class="event-date${sinFecha ? " event-date--tbd" : ""}">
@@ -197,6 +202,7 @@ function eventoHTML(e, idx) {
       ${desc}
       <div class="event-meta">
         ${hora}
+        ${mapa}
         <span class="event-tag">${c.nombre}</span>
       </div>
       ${calBtn}

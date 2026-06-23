@@ -104,7 +104,7 @@ def fechas_cal(e):
     return ("allday", ini.strftime("%Y%m%d"), fin.strftime("%Y%m%d"))
 
 
-def ics_text(titulo, desc, kind, start, end):
+def ics_text(titulo, desc, kind, start, end, loc=""):
     def esc(t):
         return (str(t).replace("\\", "\\\\").replace(";", "\\;")
                 .replace(",", "\\,").replace("\n", "\\n"))
@@ -117,6 +117,8 @@ def ics_text(titulo, desc, kind, start, end):
          f"DTSTART{dts}", f"DTEND{dte}", f"SUMMARY:{esc(titulo)}"]
     if desc:
         L.append(f"DESCRIPTION:{esc(desc)}")
+    if loc:
+        L.append(f"LOCATION:{esc(loc)}")
     L += ["END:VEVENT", "END:VCALENDAR"]
     return "\r\n".join(L) + "\r\n"
 
@@ -135,7 +137,7 @@ def generar_ics(eventos):
         fc = fechas_cal(e)
         if not fc:
             continue
-        txt = ics_text(e["titulo"], e.get("desc", ""), *fc)
+        txt = ics_text(e["titulo"], e.get("desc", ""), *fc, loc=e.get("mapa", ""))
         with open(os.path.join(ICS_DIR, f"ev-{i}.ics"), "w",
                   encoding="utf-8", newline="") as f:
             f.write(txt)
@@ -158,6 +160,7 @@ def leer_excel():
         hora = limpio(fila[5])
         desc = limpio(fila[6])
         rango = limpio(fila[7]).lower() in ("sí", "si", "x", "verdadero", "true")
+        mapa = limpio(fila[8]) if len(fila) > 8 else ""  # link de Google Maps (opcional)
 
         cat = NOMBRE_CAT.get(cat_nombre, cat_nombre)
         # dow: para rangos respeta lo escrito; si no, recalcula desde la fecha
@@ -170,6 +173,8 @@ def leer_excel():
             e["desc"] = desc
         if rango:
             e["rango"] = True
+        if mapa:
+            e["mapa"] = mapa
         eventos.append(e)
 
     # Ordena por mes y día inicial. Los eventos sin día definido (ej. apostolado
@@ -207,6 +212,8 @@ def evento_a_js(e):
         partes.append(f'hora: {js_valor(e["hora"])}')
     if e.get("rango"):
         partes.append("rango: true")
+    if e.get("mapa"):
+        partes.append(f'mapa: {js_valor(e["mapa"])}')
     return "  { " + ", ".join(partes) + " },"
 
 
