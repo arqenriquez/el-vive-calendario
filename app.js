@@ -53,9 +53,9 @@ const EVENTOS = [
   { mes: "Junio", dia: 8, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Junio", dia: 10, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Junio", dia: 17, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Junio", dia: 30, dow: "Mar", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar y hora por definir", mapa: "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8" },
 
   // ===== JULIO =====
+  { mes: "Julio", dia: 1, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Hospital General del Estado (Blvd. Colosio y Quintero Arce)", mapa: "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8", reprogramado: true },
   { mes: "Julio", dia: 1, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: 5, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Julio", dia: 6, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
@@ -192,6 +192,11 @@ function eventoHTML(e, idx) {
     ? `<a class="event-map" href="${e.mapa}" target="_blank" rel="noopener noreferrer">📍 Ver ubicación</a>`
     : "";
 
+  // Aviso de reprogramación / cambio de fecha.
+  const reprog = e.reprogramado
+    ? `<p class="event-reprog">🔁 Reprogramado · cambio de fecha</p>`
+    : "";
+
   return `<article class="event reveal ${e.rango ? "is-range" : ""} ${pasado}" data-cat="${e.cat}" style="--cat:${c.color}">
     ${doneCheck}
     <div class="event-date${sinFecha ? " event-date--tbd" : ""}">
@@ -199,6 +204,7 @@ function eventoHTML(e, idx) {
     </div>
     <div class="event-body">
       <h3 class="event-title">${e.titulo}</h3>
+      ${reprog}
       ${desc}
       <div class="event-meta">
         ${hora}
