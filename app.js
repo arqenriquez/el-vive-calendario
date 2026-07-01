@@ -145,18 +145,42 @@ function renderAgenda() {
   for (const mes of ORDEN_MESES) {
     const eventos = EVENTOS.filter((e) => e.mes === mes);
     if (!eventos.length) continue;
-    html += `<section class="month" data-mes="${mes}">
-      <div class="month-head reveal">
+
+    // Un mes está "cerrado" cuando TODAS sus fechas ya pasaron: se muestra
+    // contraído (solo el título) y se despliega al dar clic. Así la página se
+    // concentra en el mes vigente y los anteriores quedan como consulta.
+    const cerrado = eventos.every(esPasado);
+
+    const headInner = `
         <span class="month-name">${mes}</span>
         <span class="month-year">${ANIO}</span>
         <span class="month-line"></span>
-      </div>
-      <div class="timeline">
+        ${cerrado ? `<span class="month-count">Ver fechas anteriores</span><span class="month-chevron" aria-hidden="true">▾</span>` : ""}`;
+
+    const head = cerrado
+      ? `<button class="month-head month-head--toggle reveal" type="button" aria-expanded="false" aria-controls="tl-${mes}">${headInner}</button>`
+      : `<div class="month-head reveal">${headInner}</div>`;
+
+    html += `<section class="month ${cerrado ? "month--collapsible is-collapsed" : ""}" data-mes="${mes}">
+      ${head}
+      <div class="timeline" id="tl-${mes}">
         ${eventos.map((e) => eventoHTML(e, EVENTOS.indexOf(e))).join("")}
       </div>
     </section>`;
   }
   agenda.innerHTML = html;
+}
+
+/* Despliega u oculta los meses ya cerrados (toggle contraído por default). */
+function initColapsables() {
+  const agenda = document.getElementById("agenda");
+  agenda.addEventListener("click", (e) => {
+    const head = e.target.closest(".month-head--toggle");
+    if (!head) return;
+    const section = head.closest(".month");
+    const contraido = section.classList.toggle("is-collapsed");
+    head.setAttribute("aria-expanded", contraido ? "false" : "true");
+  });
 }
 
 function eventoHTML(e, idx) {
@@ -409,6 +433,7 @@ function initToTop() {
 /* ============ INIT ============ */
 document.addEventListener("DOMContentLoaded", () => {
   render();
+  initColapsables();
   initCalendario();
   initToTop();
 });
