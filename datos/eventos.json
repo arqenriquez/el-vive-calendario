@@ -126,6 +126,13 @@
   },
   {
     "mes": "Agosto",
+    "dia": 24,
+    "dow": "Lun",
+    "cat": "matrimonios",
+    "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
+  },
+  {
+    "mes": "Agosto",
     "dia": 29,
     "dow": "Sáb",
     "cat": "economica",
@@ -139,13 +146,6 @@
     "titulo": "Misa mensual",
     "hora": "5:00 p.m.",
     "desc": "Domingo"
-  },
-  {
-    "mes": "Agosto",
-    "dia": 31,
-    "dow": "Lun",
-    "cat": "matrimonios",
-    "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
   },
   {
     "mes": "Septiembre",
