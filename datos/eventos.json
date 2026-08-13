@@ -158,15 +158,6 @@
   },
   {
     "mes": "Septiembre",
-    "dia": 6,
-    "dow": "Dom",
-    "cat": "misa",
-    "titulo": "Misa de Niños",
-    "hora": "5:00 p.m.",
-    "desc": "Domingo"
-  },
-  {
-    "mes": "Septiembre",
     "dia": 9,
     "dow": "Mié",
     "cat": "consejo",
@@ -199,7 +190,7 @@
     "dia": 27,
     "dow": "Dom",
     "cat": "misa",
-    "titulo": "Misa mensual",
+    "titulo": "Misa Mensual - Misa de niños",
     "hora": "5:00 p.m.",
     "desc": "Domingo"
   },

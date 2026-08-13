@@ -112,12 +112,11 @@ const EVENTOS = [
 
   // ===== SEPTIEMBRE =====
   { mes: "Septiembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #3 de Chihuahua", desc: "Nos unimos todos en oración", rango: true },
-  { mes: "Septiembre", dia: 6, dow: "Dom", cat: "misa", titulo: "Misa de Niños", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 9, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 15, dow: "Mar", cat: "economica", titulo: "Kermés de la Parroquia La Resurrección" },
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Septiembre", dia: 27, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
+  { mes: "Septiembre", dia: 27, dow: "Dom", cat: "misa", titulo: "Misa Mensual - Misa de niños", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 28, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
 
   // ===== OCTUBRE =====
