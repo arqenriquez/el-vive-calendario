@@ -111,18 +111,18 @@
   },
   {
     "mes": "Agosto",
-    "dia": 19,
-    "dow": "Mié",
-    "cat": "apostolado",
-    "titulo": "Apostolado mensual",
-    "desc": "Lugar por definir"
+    "dia": 18,
+    "dow": "Mar",
+    "cat": "consejo",
+    "titulo": "Junta de Consejo"
   },
   {
     "mes": "Agosto",
     "dia": 19,
     "dow": "Mié",
-    "cat": "consejo",
-    "titulo": "Junta de Consejo"
+    "cat": "apostolado",
+    "titulo": "Apostolado mensual",
+    "desc": "Lugar por definir"
   },
   {
     "mes": "Agosto",
@@ -146,6 +146,13 @@
     "titulo": "Misa mensual",
     "hora": "5:00 p.m.",
     "desc": "Domingo"
+  },
+  {
+    "mes": "Septiembre",
+    "dia": 2,
+    "dow": "Mié",
+    "cat": "consejo",
+    "titulo": "Junta de Consejo"
   },
   {
     "mes": "Septiembre",

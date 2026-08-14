@@ -104,13 +104,14 @@ const EVENTOS = [
   // ===== AGOSTO =====
   { mes: "Agosto", dia: "3 – 16", dow: "Lun a Dom", cat: "especial", titulo: "Vacaciones", desc: "Del lunes 3 al domingo 16 de agosto.", rango: true },
   { mes: "Agosto", dia: 11, dow: "Mar", cat: "misa", titulo: "Misa por el 30.º Aniversario de la Comunidad ÉL VIVE" },
+  { mes: "Agosto", dia: 18, dow: "Mar", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Agosto", dia: 19, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
-  { mes: "Agosto", dia: 19, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Agosto", dia: 24, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Agosto", dia: 29, dow: "Sáb", cat: "economica", titulo: "Actividad económica chica" },
   { mes: "Agosto", dia: 30, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
 
   // ===== SEPTIEMBRE =====
+  { mes: "Septiembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro #3 de Chihuahua", desc: "Nos unimos todos en oración", rango: true },
   { mes: "Septiembre", dia: 9, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 15, dow: "Mar", cat: "economica", titulo: "Kermés de la Parroquia La Resurrección" },
