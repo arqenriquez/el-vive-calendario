@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Flujo de Efectivo MX · Juego de finanzas personales</title>
+  <meta name="description" content="Juego de flujo de efectivo inspirado en Cashflow, adaptado a México: profesiones locales, pesos mexicanos, Infonavit, CETES, FIBRAs y bienes raíces nacionales." />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%B0%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+</head>
+<body>
+
+<!-- =========================================================
+     PANTALLA 1 · INICIO
+     ========================================================= -->
+<section class="pantalla" id="pantalla-inicio">
+  <div class="hero">
+    <div class="hero-badge">Versión mexicana · pesos y realidad local</div>
+    <h1 class="hero-title">Flujo de Efectivo <span>MX</span></h1>
+    <p class="hero-sub">
+      Sal de la carrera de la rata con profesiones mexicanas, Infonavit, CETES,
+      FIBRAs, tandas de imprevistos y bienes raíces de aquí. Partidas rápidas
+      para repasar escenarios financieros.
+    </p>
+
+    <div class="hero-acciones">
+      <button class="btn btn-primario btn-grande" id="btn-continuar" hidden>Continuar partida</button>
+      <button class="btn btn-primario btn-grande" id="btn-nueva">Nueva partida</button>
+      <button class="btn btn-fantasma" id="btn-como">Cómo se juega</button>
+      <button class="btn btn-fantasma" id="btn-glosario-inicio">Glosario financiero</button>
+    </div>
+
+    <div class="hero-meta">
+      <div><strong>Meta:</strong> que tu ingreso pasivo supere tus gastos mensuales.</div>
+      <div><strong>Después:</strong> la Vía Rápida, donde compras tu sueño.</div>
+    </div>
+  </div>
+
+  <!-- Selector de profesión -->
+  <div class="selector" id="selector-profesion" hidden>
+    <div class="selector-encabezado">
+      <h2>Elige tu profesión</h2>
+      <p>Cada una arranca con distinto sueldo, deudas y margen. Las de sueldo alto no siempre son las más fáciles.</p>
+    </div>
+    <div class="prof-grid" id="prof-grid"></div>
+    <button class="btn btn-fantasma" id="btn-cancelar-seleccion">Regresar</button>
+  </div>
+</section>
+
+<!-- =========================================================
+     PANTALLA 2 · JUEGO
+     ========================================================= -->
+<section class="pantalla oculta" id="pantalla-juego">
+
+  <header class="barra-superior">
+    <button class="icono-btn" id="btn-menu" aria-label="Menú">☰</button>
+    <div class="barra-info">
+      <div class="barra-prof"><span id="barra-emoji">💼</span> <span id="barra-profesion">—</span></div>
+      <div class="barra-turno">Turno <span id="barra-turno">1</span></div>
+    </div>
+    <div class="barra-efectivo">
+      <span class="etq">Efectivo</span>
+      <strong id="barra-efectivo">$0</strong>
+    </div>
+  </header>
+
+  <!-- Progreso hacia la meta -->
+  <div class="meta-barra" id="meta-barra">
+    <div class="meta-textos">
+      <span>Ingreso pasivo <strong id="meta-pasivo">$0</strong></span>
+      <span>Gastos <strong id="meta-gastos">$0</strong></span>
+    </div>
+    <div class="meta-track"><div class="meta-fill" id="meta-fill"></div></div>
+    <div class="meta-nota" id="meta-nota">Te falta cubrir tus gastos con ingreso pasivo.</div>
+  </div>
+
+  <!-- Tablero -->
+  <div class="tablero-envoltura">
+    <div class="tablero" id="tablero"></div>
+    <div class="tablero-centro" id="tablero-centro">
+      <div class="dados" id="dados"><span class="dado">?</span></div>
+      <div class="centro-flujo">
+        <span class="etq">Flujo mensual</span>
+        <strong id="centro-flujo">$0</strong>
+      </div>
+      <div class="centro-nota" id="centro-nota">Tira el dado para avanzar</div>
+    </div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="acciones">
+    <div class="selector-dados oculto" id="selector-dados">
+      <span>Gracias a tu donativo puedes tirar:</span>
+      <div class="chips">
+        <button class="chip" data-dados="1">1 dado</button>
+        <button class="chip" data-dados="2">2 dados</button>
+        <button class="chip" data-dados="3">3 dados</button>
+      </div>
+    </div>
+    <button class="btn btn-primario btn-tirar" id="btn-tirar">Tirar dado</button>
+    <div class="acciones-secundarias">
+      <button class="btn btn-secundario" id="btn-estado">Estado financiero</button>
+      <button class="btn btn-secundario" id="btn-banco">Banco</button>
+      <button class="btn btn-secundario" id="btn-registro">Registro</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     MODAL GENÉRICO (cartas, avisos, victoria)
+     ========================================================= -->
+<div class="modal-fondo oculto" id="modal-fondo">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-cabeza" id="modal-cabeza">
+      <span class="modal-icono" id="modal-icono">💡</span>
+      <div>
+        <div class="modal-etiqueta" id="modal-etiqueta">Carta</div>
+        <h3 class="modal-titulo" id="modal-titulo">Título</h3>
+      </div>
+    </div>
+    <div class="modal-cuerpo" id="modal-cuerpo"></div>
+    <div class="modal-pie" id="modal-pie"></div>
+  </div>
+</div>
+
+<!-- =========================================================
+     PANELES LATERALES
+     ========================================================= -->
+<div class="panel-fondo oculto" id="panel-fondo">
+  <aside class="panel" id="panel" role="dialog" aria-modal="true">
+    <div class="panel-cabeza">
+      <h3 id="panel-titulo">Panel</h3>
+      <button class="icono-btn" id="btn-cerrar-panel" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="panel-cuerpo" id="panel-cuerpo"></div>
+  </aside>
+</div>
+
+<div class="avisos" id="avisos" aria-live="polite"></div>
+
+<script src="js/datos.js?v=1"></script>
+<script src="js/motor.js?v=1"></script>
+<script src="js/juego.js?v=1"></script>
+</body>
+</html>

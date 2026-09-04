@@ -28,3 +28,9 @@ y entra a `http://localhost:5599`.
 ## Editar fechas
 Toda la información de eventos vive en el arreglo `EVENTOS` dentro de `app.js`.
 Consulta **MANUAL-ACTUALIZACION.md** para el paso a paso.
+
+## Otro proyecto en este repositorio
+
+- **[Flujo de Efectivo MX](cashflow/)** — juego de finanzas personales inspirado en Cashflow,
+  adaptado a México (profesiones locales, pesos, Infonavit, CETES, FIBRAs, bienes raíces
+  nacionales). Se abre en `cashflow/index.html` y es independiente del calendario.
