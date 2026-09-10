@@ -141,7 +141,6 @@ const EVENTOS = [
   // ===== DICIEMBRE =====
   { mes: "Diciembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Diciembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro de Compromiso", desc: "Retiro de compromiso INI#1 HMO", rango: true },
-  { mes: "Diciembre", dia: 8, dow: "Mar", cat: "economica", titulo: "Mega Rifa" },
   { mes: "Diciembre", dia: 9, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Diciembre", dia: 11, dow: "Vie", cat: "especial", titulo: "Peregrinación" },
   { mes: "Diciembre", dia: 12, dow: "Sáb", cat: "especial", titulo: "Día de la Virgen, misa y Posada KIDS" },
