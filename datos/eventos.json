@@ -360,11 +360,10 @@
   },
   {
     "mes": "Diciembre",
-    "dia": 14,
-    "dow": "Lun",
+    "dia": 16,
+    "dow": "Mié",
     "cat": "especial",
-    "titulo": "Posada durante la junta",
-    "desc": "Última junta del mes de diciembre."
+    "titulo": "Posada"
   },
   {
     "mes": "Diciembre",
