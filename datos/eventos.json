@@ -209,8 +209,8 @@
     "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
   },
   {
-    "mes": "Octubre",
-    "dia": 7,
+    "mes": "Septiembre",
+    "dia": 30,
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
@@ -233,17 +233,18 @@
   },
   {
     "mes": "Octubre",
-    "dia": 21,
+    "dia": 14,
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
   },
   {
     "mes": "Octubre",
-    "dia": 24,
-    "dow": "Sáb",
-    "cat": "economica",
-    "titulo": "Actividad económica grande (Conferencias)"
+    "dia": "24 – 25",
+    "dow": "Sáb a Dom",
+    "cat": "especial",
+    "titulo": "Lunada en el Rancho",
+    "rango": true
   },
   {
     "mes": "Octubre",
@@ -269,6 +270,13 @@
     "titulo": "Inicio de invitaciones para el Retiro de Compromiso 1"
   },
   {
+    "mes": "Octubre",
+    "dia": 28,
+    "dow": "Mié",
+    "cat": "consejo",
+    "titulo": "Junta de Consejo"
+  },
+  {
     "mes": "Noviembre",
     "dia": 2,
     "dow": "Lun",
@@ -277,7 +285,7 @@
   },
   {
     "mes": "Noviembre",
-    "dia": 4,
+    "dia": 11,
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
@@ -301,24 +309,31 @@
   },
   {
     "mes": "Noviembre",
-    "dia": 18,
-    "dow": "Mié",
-    "cat": "consejo",
-    "titulo": "Junta de Consejo"
-  },
-  {
-    "mes": "Noviembre",
     "dia": 23,
     "dow": "Lun",
     "cat": "matrimonios",
     "titulo": "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación"
   },
   {
-    "mes": "Diciembre",
-    "dia": 2,
+    "mes": "Noviembre",
+    "dia": 25,
+    "dow": "Mié",
+    "cat": "economica",
+    "titulo": "Conferencias ÉL VIVE"
+  },
+  {
+    "mes": "Noviembre",
+    "dia": 25,
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
+  },
+  {
+    "mes": "Noviembre",
+    "dia": 28,
+    "dow": "Sáb",
+    "cat": "especial",
+    "titulo": "Limpieza de rancho"
   },
   {
     "mes": "Diciembre",
@@ -336,6 +351,13 @@
     "cat": "apostolado",
     "titulo": "Apostolado mensual",
     "desc": "Lugar por definir"
+  },
+  {
+    "mes": "Diciembre",
+    "dia": 9,
+    "dow": "Mié",
+    "cat": "consejo",
+    "titulo": "Junta de Consejo"
   },
   {
     "mes": "Diciembre",
@@ -357,13 +379,6 @@
     "dow": "Mié",
     "cat": "especial",
     "titulo": "Posada"
-  },
-  {
-    "mes": "Diciembre",
-    "dia": 16,
-    "dow": "Mié",
-    "cat": "consejo",
-    "titulo": "Junta de Consejo"
   },
   {
     "mes": "Diciembre",

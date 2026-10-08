@@ -121,33 +121,35 @@ const EVENTOS = [
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Septiembre", dia: 27, dow: "Dom", cat: "misa", titulo: "Misa Mensual - Misa de niños", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 28, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
+  { mes: "Septiembre", dia: 30, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== OCTUBRE =====
-  { mes: "Octubre", dia: 7, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Octubre", dia: 10, dow: "Sáb", cat: "especial", titulo: "Primera limpieza de rancho con Comunidad de Iniciación 1", desc: "Incluye un momento de convivencia, oración y encuentro en el rancho." },
   { mes: "Octubre", dia: 14, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
-  { mes: "Octubre", dia: 21, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Octubre", dia: 24, dow: "Sáb", cat: "economica", titulo: "Actividad económica grande (Conferencias)" },
+  { mes: "Octubre", dia: 14, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
+  { mes: "Octubre", dia: "24 – 25", dow: "Sáb a Dom", cat: "especial", titulo: "Lunada en el Rancho", rango: true },
   { mes: "Octubre", dia: 25, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Octubre", dia: 26, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Octubre", dia: 27, dow: "Mar", cat: "especial", titulo: "Inicio de invitaciones para el Retiro de Compromiso 1" },
+  { mes: "Octubre", dia: 28, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== NOVIEMBRE =====
   { mes: "Noviembre", dia: 2, dow: "Lun", cat: "economica", titulo: "Inicio de la Mega Rifa" },
-  { mes: "Noviembre", dia: 4, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
+  { mes: "Noviembre", dia: 11, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 14, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Noviembre", dia: 15, dow: "Dom", cat: "misa", titulo: "Misa mensual y convivencia con KIDS", desc: "(O apostolado con KIDS, por definir.)", hora: "5:00 p.m." },
-  { mes: "Noviembre", dia: 18, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 23, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
+  { mes: "Noviembre", dia: 25, dow: "Mié", cat: "economica", titulo: "Conferencias ÉL VIVE" },
+  { mes: "Noviembre", dia: 25, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
+  { mes: "Noviembre", dia: 28, dow: "Sáb", cat: "especial", titulo: "Limpieza de rancho" },
 
   // ===== DICIEMBRE =====
-  { mes: "Diciembre", dia: 2, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Diciembre", dia: "4 – 6", dow: "Vie a Dom", cat: "especial", titulo: "Retiro de Compromiso", desc: "Retiro de compromiso INI#1 HMO", rango: true },
   { mes: "Diciembre", dia: 9, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
+  { mes: "Diciembre", dia: 9, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Diciembre", dia: 11, dow: "Vie", cat: "especial", titulo: "Peregrinación" },
   { mes: "Diciembre", dia: 12, dow: "Sáb", cat: "especial", titulo: "Día de la Virgen, misa y Posada KIDS" },
   { mes: "Diciembre", dia: 16, dow: "Mié", cat: "especial", titulo: "Posada" },
-  { mes: "Diciembre", dia: 16, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Diciembre", dia: 17, dow: "Jue", cat: "especial", titulo: "Última Hora Santa del año" },
 ];
 
