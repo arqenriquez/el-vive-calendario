@@ -26,6 +26,7 @@
     "dow": "Mié",
     "cat": "apostolado",
     "titulo": "Apostolado mensual",
+    "hora": "8:00 p.m.",
     "desc": "Hospital General del Estado (Blvd. Colosio y Quintero Arce)",
     "mapa": "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8",
     "reprogramado": true
@@ -197,7 +198,7 @@
     "dia": 27,
     "dow": "Dom",
     "cat": "misa",
-    "titulo": "Misa Mensual - Misa de niños",
+    "titulo": "Misa Mensual",
     "hora": "5:00 p.m.",
     "desc": "Domingo"
   },
@@ -214,22 +215,6 @@
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
-  },
-  {
-    "mes": "Octubre",
-    "dia": 10,
-    "dow": "Sáb",
-    "cat": "especial",
-    "titulo": "Primera limpieza de rancho con Comunidad de Iniciación 1",
-    "desc": "Incluye un momento de convivencia, oración y encuentro en el rancho."
-  },
-  {
-    "mes": "Octubre",
-    "dia": 14,
-    "dow": "Mié",
-    "cat": "apostolado",
-    "titulo": "Apostolado mensual",
-    "desc": "Lugar por definir"
   },
   {
     "mes": "Octubre",
@@ -275,13 +260,6 @@
     "dow": "Mié",
     "cat": "consejo",
     "titulo": "Junta de Consejo"
-  },
-  {
-    "mes": "Noviembre",
-    "dia": 2,
-    "dow": "Lun",
-    "cat": "economica",
-    "titulo": "Inicio de la Mega Rifa"
   },
   {
     "mes": "Noviembre",

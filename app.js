@@ -93,7 +93,7 @@ const EVENTOS = [
   { mes: "Junio", dia: 17, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== JULIO =====
-  { mes: "Julio", dia: 1, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Hospital General del Estado (Blvd. Colosio y Quintero Arce)", mapa: "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8", reprogramado: true },
+  { mes: "Julio", dia: 1, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Hospital General del Estado (Blvd. Colosio y Quintero Arce)", hora: "8:00 p.m.", mapa: "https://maps.app.goo.gl/wZGdSHUt6B2ged2w8", reprogramado: true },
   { mes: "Julio", dia: 1, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Julio", dia: 5, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Julio", dia: 6, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
@@ -119,13 +119,11 @@ const EVENTOS = [
   { mes: "Septiembre", dia: 15, dow: "Mar", cat: "economica", titulo: "Kermés de la Parroquia La Resurrección" },
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Septiembre", dia: 23, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
-  { mes: "Septiembre", dia: 27, dow: "Dom", cat: "misa", titulo: "Misa Mensual - Misa de niños", desc: "Domingo", hora: "5:00 p.m." },
+  { mes: "Septiembre", dia: 27, dow: "Dom", cat: "misa", titulo: "Misa Mensual", desc: "Domingo", hora: "5:00 p.m." },
   { mes: "Septiembre", dia: 28, dow: "Lun", cat: "matrimonios", titulo: "Matrimonios ÉL VIVE, KIDS y Juntas de Comunidad e Iniciación" },
   { mes: "Septiembre", dia: 30, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== OCTUBRE =====
-  { mes: "Octubre", dia: 10, dow: "Sáb", cat: "especial", titulo: "Primera limpieza de rancho con Comunidad de Iniciación 1", desc: "Incluye un momento de convivencia, oración y encuentro en el rancho." },
-  { mes: "Octubre", dia: 14, dow: "Mié", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Octubre", dia: 14, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Octubre", dia: "24 – 25", dow: "Sáb a Dom", cat: "especial", titulo: "Lunada en el Rancho", rango: true },
   { mes: "Octubre", dia: 25, dow: "Dom", cat: "misa", titulo: "Misa mensual", desc: "Domingo", hora: "5:00 p.m." },
@@ -134,7 +132,6 @@ const EVENTOS = [
   { mes: "Octubre", dia: 28, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
 
   // ===== NOVIEMBRE =====
-  { mes: "Noviembre", dia: 2, dow: "Lun", cat: "economica", titulo: "Inicio de la Mega Rifa" },
   { mes: "Noviembre", dia: 11, dow: "Mié", cat: "consejo", titulo: "Junta de Consejo" },
   { mes: "Noviembre", dia: 14, dow: "Sáb", cat: "apostolado", titulo: "Apostolado mensual", desc: "Lugar por definir" },
   { mes: "Noviembre", dia: 15, dow: "Dom", cat: "misa", titulo: "Misa mensual y convivencia con KIDS", desc: "(O apostolado con KIDS, por definir.)", hora: "5:00 p.m." },
